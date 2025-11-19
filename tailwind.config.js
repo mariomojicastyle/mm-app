@@ -1,9 +1,9 @@
-// tailwind.config.js
+// tailwind.config.js (Versión ES Modules Limpia)
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
     "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}", // Crucial para escanear componentes
+    "./src/**/*.{js,ts,jsx,tsx}", 
   ],
   theme: {
     extend: {},

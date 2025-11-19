@@ -1,4 +1,4 @@
-// src/pages/LandingPage.jsx (Código Original)
+// src/pages/LandingPage.jsx
 import React from 'react';
 import MarketingLayout from '../layouts/MarketingLayout'; // <-- Importación del Layout
 
@@ -66,6 +66,6 @@ const LandingPage = () => {
 
     </MarketingLayout>
   );
-};
+}; // <--- FALTA EL CIERRE DE LA FUNCIÓN
 
-export default LandingPage;
+export default LandingPage; // <--- FALTA EL EXPORT
