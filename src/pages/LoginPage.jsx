@@ -1,7 +1,6 @@
-// src/pages/LoginPage.jsx (Código Original RESTAURADO y COMPLETO)
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../hooks/useAuth.jsx'; // <-- Asegúrate de usar .jsx
+import { useAuth } from '../hooks/useAuth.jsx'; 
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -26,12 +25,16 @@ const LoginPage = () => {
       console.error(authError.message);
       setError('Error al iniciar sesión: Credenciales incorrectas o usuario no existe.');
     } else {
+      // Navegación exitosa al Dashboard
       navigate('/dashboard'); 
     }
   };
 
   return (
+    // CONTENEDOR PRINCIPAL: Fondo gris suave, altura completa y centrado total
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+      
+      {/* CAJA DEL FORMULARIO: Blanca, con sombra profunda (shadow-2xl) y bordes redondeados */}
       <div className="max-w-md w-full space-y-8 p-10 bg-white rounded-xl shadow-2xl">
         <div>
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
@@ -43,7 +46,7 @@ const LoginPage = () => {
         </div>
 
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-          {/* Muestra el error si existe */}
+          {/* Mensaje de Error: Fondo rojo suave con texto rojo oscuro */}
           {error && (
             <div className="p-3 text-sm text-red-700 bg-red-100 rounded-lg">
               {error}
@@ -61,7 +64,7 @@ const LoginPage = () => {
                 type="email"
                 autoComplete="email"
                 required
-                className="appearance-none rounded-none relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
+                className="appearance-none relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
                 placeholder="Correo Electrónico"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -77,7 +80,7 @@ const LoginPage = () => {
                 type="password"
                 autoComplete="current-password"
                 required
-                className="appearance-none rounded-none relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
+                className="appearance-none relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
                 placeholder="Contraseña"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -90,7 +93,9 @@ const LoginPage = () => {
               type="submit"
               disabled={loading}
               className={`group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-md text-white ${
-                loading ? 'bg-green-400 cursor-not-allowed' : 'bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500'
+                loading 
+                  ? 'bg-green-400 cursor-not-allowed' 
+                  : 'bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500'
               }`}
             >
               {loading ? 'Cargando...' : 'Iniciar Sesión'}
