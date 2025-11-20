@@ -1,37 +1,71 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
+import { AuthProvider } from './hooks/useAuth'
 
-// Placeholder components (luego los moveremos a sus archivos reales)
+// Componentes
+import Layout from './components/Layout'
+
+// Páginas
+import LoginPage from './pages/Login'
+import DashboardPage from './pages/DashboardPage'
+import Product from './pages/Product'
+import Services from './pages/Services' // Nuevo
+import Contact from './pages/Contact'   // Nuevo
+
+// Un Home un poco más elaborado
 const Home = () => (
-  <div style={{ padding: '20px' }}>
-    <h1>Bienvenido a Mario Mojica Design</h1>
-    <p>Selecciona tu portal:</p>
-    <nav>
-      <ul>
-        <li><Link to="/product">Ir a Producto (B2C)</Link></li>
-        <li><Link to="/login">Ir a Portal Clientes (B2B)</Link></li>
-      </ul>
-    </nav>
+  <div className="relative bg-white overflow-hidden">
+    <div className="max-w-7xl mx-auto">
+      <div className="relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
+        <main className="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
+          <div className="sm:text-center lg:text-left">
+            <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
+              <span className="block xl:inline">Mobiliario innovador</span>{' '}
+              <span className="block text-green-600 xl:inline">para espacios vivos</span>
+            </h1>
+            <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+              Especialistas en diseño paramétrico, fabricación digital CNC y estructuras de Guadua Angustifolia. Llevamos tu proyecto del boceto a la realidad.
+            </p>
+            <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
+              <div className="rounded-md shadow">
+                <Link to="/product" className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-green-600 hover:bg-green-700 md:py-4 md:text-lg md:px-10">
+                  Ver Tienda 3D
+                </Link>
+              </div>
+              <div className="mt-3 sm:mt-0 sm:ml-3">
+                <Link to="/contact" className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-green-700 bg-green-100 hover:bg-green-200 md:py-4 md:text-lg md:px-10">
+                  Agendar Cita
+                </Link>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+    {/* Imagen Hero Decorativa */}
+    <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 bg-gray-100 flex items-center justify-center">
+       <span className="text-gray-400 font-bold text-xl">[Imagen Hero de Guadua]</span>
+    </div>
   </div>
 )
 
-const Login = () => <h2>Página de Login (Próximamente)</h2>
-const Dashboard = () => <h2>Dashboard Privado (Próximamente)</h2>
-const Product = () => <h2>Visor 3D (Próximamente)</h2>
-
 function App() {
   return (
-    <Router>
-      <Routes>
-        {/* Rutas Públicas */}
-        <Route path="/" element={<Home />} />
-        <Route path="/product" element={<Product />} />
-        
-        {/* Rutas B2B */}
-        <Route path="/login" element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-      </Routes>
-    </Router>
+    <AuthProvider>
+      <Router>
+        <Routes>
+          {/* El Layout envuelve a todas las rutas hijas */}
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="servicios" element={<Services />} />
+            <Route path="contacto" element={<Contact />} />
+            <Route path="product" element={<Product />} />
+            <Route path="login" element={<LoginPage />} />
+            <Route path="dashboard" element={<DashboardPage />} />
+          </Route>
+        </Routes>
+      </Router>
+    </AuthProvider>
   )
 }
 
