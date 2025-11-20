@@ -12,7 +12,7 @@ const Contact = () => {
     const data = Object.fromEntries(formData.entries())
 
     try {
-      const response = await fetch('https://n8n.mariomojica.com:5678/webhook-test/contacto', {
+      const response = await fetch('https://n8n.mariomojica.com/webhook-test/contacto', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
