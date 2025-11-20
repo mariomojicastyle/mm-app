@@ -6,9 +6,9 @@ import { AuthProvider } from './hooks/useAuth'
 import Layout from './components/Layout'
 
 // Páginas
-import LoginPage from './pages/Login'
+import LoginPage from './pages/LoginPage'
 import DashboardPage from './pages/DashboardPage'
-import Product from './pages/Product'
+import Product from './pages/ProductPage'
 import Services from './pages/Services' // Nuevo
 import Contact from './pages/Contact'   // Nuevo
 
