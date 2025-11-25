@@ -9,12 +9,12 @@ export default function RealiadaAumentada({ id }) {
   
   //Apenas inicia el aplicativo, se agrega la ruta del paso 00.
   useEffect(()=>{
-    refAr.current.src=`https://3dymedios.com/Prueba/AP/${Cliente}/${id}/models/P00.glb`;
+    refAr.current.src=`/${id}/models/P00.glb`;
   },[])
 
   useEffect(() => {
     // refAr.current.src= `./${id}/models/P${pasoActual}.glb`
-    refAr.current.src = `https://3dymedios.com/Prueba/AP/${Cliente}/${id}/models/P${pasoActual}.glb`;
+    refAr.current.src = `/${id}/models/P${pasoActual}.glb`;
 
   }, [pasoActual,Cliente])
 
@@ -32,11 +32,8 @@ export default function RealiadaAumentada({ id }) {
             backgroundColor: "white",
             width: "100%",
             height: "100%",
-            borderRadius: "4px",
+            borderRadius: "50%",
             border: "none",
-            position: "fixed",
-            top: "0px",
-            right: "0px",
           }}>
           <span className="material-symbols-outlined" style={{ color: "#f28f1d" }}>
             view_in_ar_new
